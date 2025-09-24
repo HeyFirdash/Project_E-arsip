@@ -1,6 +1,11 @@
 <?php
     include "../functions.php";
-    if(isset())
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        
+        login_user($username, $password);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

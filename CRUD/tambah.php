@@ -1,42 +1,48 @@
 <?php 
-    if(isset($_POST['namaproduk'])) {
-        $nama = $_POST['namaproduk'];
-        $harga = $_POST['harga'];
-        $stok = $_POST['stok'];
-
-        $query = mysqli_query($koneksi, "INSERT INTO produk(namaproduk,stok,harga) values('$nama','$stok','$harga')");
-        if($query){
-            echo '<script>alert("Tambah Data Berhasil")</script>';
-        }else {
-            echo '<script>alert("Tambah Data Gagal")</script>';
-        }
+    if(isset($_POST['nomor_surat'])) {
+        $nomor = $_POST['nomor_surat'];
+        $uraian = $_POST['uraian'];
+        $tanggal = $_POST['tanggal'];
+        $jumlah = $_POST['jumlah'];
+        $keterangan = $_POST['keterangan'];
+        insert_data($nomor, $uraian, $tanggal, $jumlah, $keterangan);
     }
 ?>
 
 <div class="container-fluid px-4">
-                        <h1 class="mt-4">Produk</h1>
+                        <h1 class="mt-4">Arsip</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Produk</li>
+                            <li class="breadcrumb-item active">Arsip</li>
                         </ol>
-                        <a href="?page=produk" class="btn btn-danger">Kembali</a>
+                        <a href="?page=arsip" class="btn btn-danger">Kembali</a>
                         <hr>
      
                     <form method="post">
                         <table class="table table--bordered">
                             <tr>
-                                <td width="200">Nama Produk</td>
+                                <td width="200">Nomor Surat</td>
                                 <td width="1">:</td>
-                                <td><input class="form-control" type="text" name="namaproduk"></td>
+                                <td><input class="form-control" type="text" name="nomor_surat" required></td>
                             </tr>
                              <tr>
-                                <td>Harga</td>
+                                <td>Uraian</td>
                                 <td>:</td>
-                                <td><input class="form-control" type="number" step="0" name="harga"></td>
+                                <td><input class="form-control" type="text" step="0" name="uraian" required></td>
                             </tr>
                              <tr>
-                                <td>Stok</td>
+                                <td>Tanggal</td>
                                 <td>:</td>
-                                <td><input class="form-control" type="number" step="0" name="stok"></td>
+                                <td><input class="form-control" type="date" step="0" name="tanggal" required></td>
+                            </tr>
+                             <tr>
+                                <td>Jumlah lembar</td>
+                                <td>:</td>
+                                <td><input class="form-control" type="number" step="0" name="jumlah" required></td>
+                            </tr>
+                             <tr>
+                                <td>Keterangan</td>
+                                <td>:</td>
+                                <td><input class="form-control" type="text-box" step="0" name="keterangan"></td>
                             </tr>
                             <tr>
                                 <td></td>

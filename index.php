@@ -1,8 +1,8 @@
 <?php 
-    include ('koneksi.php');
-    // if(!isset($_SESSION['user'])) {
-    //     header('location:login.php');
-    // }
+    include ('functions.php');
+    if(!isset($_SESSION['user'])) {
+        header('location: auth/login.php');
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,37 +20,16 @@
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
     <!-- Navbar Brand-->
-    <i class="fa-solid fa-cart-shopping" style="color: white; font-size: 24px; margin-left: 10px;"></i>
-    <a class="navbar-brand ps-3" href="index.html">
+    <i class="fa-solid fa-folder-open" style="color: white; font-size: 24px; margin-left: 10px;"></i>
+    <a class="navbar-brand ps-3" href="index.php">
         Aplikasi E-arsip
     </a>
 
             
-                     <ul class="navbar-nav ms-auto">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fas fa-user fa-fw"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Settings</a></li>
-                        <li><a class="dropdown-item" href="#!">Log Activity</a></li>
-                        <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">Logout</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <!-- Sidebar Toggle-->
-            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
-            <!-- Navbar Search-->
-            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
-                </div>
-            </form>
-            <!-- Navbar-->
-          
+        <!-- Sidebar Toggle (pojok kanan) -->
+        <button class="btn btn-link btn-sm ms-auto me-3" id="sidebarToggle">
+            <i class="fas fa-bars"></i>
+        </button>
 
         </nav>
         <div id="layoutSidenav">
@@ -60,28 +39,37 @@
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Navigasi</div>
                             <a class="nav-link" href="index.php">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Dashboard
                             </a>
                             <a class="nav-link" href="auth/logout.php">
-                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-right-from-bracket"></i></div>
                                 Logout
                             </a>
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
                         <div class="small">Logged in as:</div>
-                        <?php echo $_SESSION['user']['namauser']; ?>
+                        <?php echo $_SESSION['user']['username']; ?>
                     </div>
                 </nav>
             </div>
             <div id="layoutSidenav_content">
                 <main>
 
-                    <?php 
-                        // $page = isset($_GET['page']) ? $_GET['page'] : 'home';
-                        // include $page. '.php';
-                    ?>
+                    <main>
+                        <?php 
+                            // daftar halaman yang diizinkan
+                            $allowed_pages = ['arsip', 'tambah', 'ubah', 'hapus'];
+
+                            if (isset($_GET['page']) && in_array($_GET['page'], $allowed_pages)) {
+                                include "CRUD/" . $_GET['page'] . ".php";
+                            } else {
+                                include "CRUD/arsip.php"; // default halaman
+                            }
+                        ?>
+                    </main>
+
 
                 </main>
                 <footer class="py-4 bg-light mt-auto">
