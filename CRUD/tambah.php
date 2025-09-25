@@ -12,7 +12,7 @@
 <div class="container-fluid px-4">
                         <h1 class="mt-4">Arsip</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Arsip</li>
+                            <li class="breadcrumb-item active">Tambah Data</li>
                         </ol>
                         <a href="?page=arsip" class="btn btn-danger">Kembali</a>
                         <hr>

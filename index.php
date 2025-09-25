@@ -60,7 +60,7 @@
                     <main>
                         <?php 
                             // daftar halaman yang diizinkan
-                            $allowed_pages = ['arsip', 'tambah', 'ubah', 'hapus', 'hapus_all','print'];
+                            $allowed_pages = ['arsip', 'tambah', 'ubah', 'hapus', 'hapus_all','print', 'kredensial'];
 
                             if (isset($_GET['page']) && in_array($_GET['page'], $allowed_pages)) {
                                 include "CRUD/" . $_GET['page'] . ".php";
@@ -75,12 +75,7 @@
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Aplikasi Kasir 2025</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
+                            <div class="text-muted">Copyright &copy; Aplikasi E-arsip 2025</div>
                         </div>
                     </div>
                 </footer>

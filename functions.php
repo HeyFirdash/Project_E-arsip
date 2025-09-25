@@ -68,6 +68,13 @@ function edit_data($data_id, $nomor, $uraian, $tanggal, $jumlah, $keterangan){
 
 
 function search_item($keyword){
+        $keyword = mysqli_real_escape_string($GLOBALS['koneksi'], $keyword); 
+        return query("SELECT * FROM klip_arsip 
+                    WHERE nomor_surat LIKE '%$keyword%' 
+                        OR uraian LIKE '%$keyword%' 
+                        OR tanggal LIKE '%$keyword%' 
+                        OR jumlah_lembar LIKE '%$keyword%' 
+                        OR keterangan LIKE '%$keyword%'");
 
 }
 
