@@ -12,7 +12,7 @@
                                 <a href="?page=hapus" class="btn btn-danger">
                                     <i class="fas fa-trash"></i> Hapus Semua
                                 </a>
-                                <a href="?page=cetak" class="btn btn-success">
+                                <a href="?page=print" class="btn btn-success">
                                     <i class="fas fa-archive"></i> Simpan
                                 </a>
                             </div>
