@@ -1,9 +1,26 @@
-<?php 
-$id = $_GET['id'];
-$query = mysqli_query($koneksi, "DELETE FROM produk WHERE produkid=$id"); 
- if($query){
-            echo '<script>alert("Hapus Data Berhasil"); location.href="?page=produk"</script>';
-        }else {
-            echo '<script>alert("Hapus Data Gagal")</script>';
-        }
+<?php
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+
+    // query hapus
+    $delete = query("DELETE FROM klip_arsip WHERE id_klip = '$id'");
+
+    if ($delete) {
+        echo "<script>
+                alert('Data berhasil dihapus!');
+                window.location.href='?page=arsip';
+              </script>";
+    } else {
+        echo "<script>
+                alert('Gagal menghapus data!');
+                window.location.href='?page=arsip';
+              </script>";
+    }
+} else {
+    echo "<script>
+            alert('ID tidak ditemukan!');
+            window.location.href='?page=arsip';
+          </script>";
+}
+
 ?>

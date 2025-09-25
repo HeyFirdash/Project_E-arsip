@@ -9,7 +9,9 @@
                                 <a href="?page=tambah" class="btn btn-primary">
                                     <i class="fas fa-plus"></i> Tambah Data
                                 </a>
-                                <a href="?page=hapus" class="btn btn-danger">
+                                <a href="?page=hapus_all" 
+                                    onclick="return confirm('⚠️ Yakin mau hapus semua data? Semua data yang terhapus tidak bisa dikembalikan!')" 
+                                    class="btn btn-danger">
                                     <i class="fas fa-trash"></i> Hapus Semua
                                 </a>
                                 <a href="?page=print" class="btn btn-success">
@@ -51,12 +53,17 @@
                                     <td><?php echo $no; ?></td>
                                     <td><?php echo $data['nomor_surat']; ?></td>
                                     <td><?php echo $data['uraian']; ?></td>
-                                    <td><?php echo $data['tanggal']; ?></td>
+                                    <td><?php echo date('d/m/Y', strtotime($data['tanggal'])); ?></td>
                                     <td><?php echo $data['jumlah_lembar']; ?></td>
                                     <td><?php echo $data['keterangan']; ?></td>
                                     <td>
                                         <a href="?page=ubah&&id=<?php echo $data['id_klip']; ?>" class="btn btn-secondary"><i class="fa-solid fa-pencil"></i></a>
-                                        <a href="?page=hapus&&id=<?php echo $data['id_klip']; ?>" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
+                                        <a href="?page=hapus&&id=<?php echo $data['id_klip']; ?>" 
+                                            onclick="return confirm('Yakin ingin menghapus data ini?')" 
+                                            class="btn btn-danger">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </a>
+
                                     </td>
                                 </tr>
                                 <?php

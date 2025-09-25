@@ -36,7 +36,7 @@ function log_out(){
 }
 
 function insert_data($nomor, $uraian, $tanggal, $jumlah, $keterangan){
-        $query = query("INSERT INTO klip_arsip(nomor_surat, uraian, tanggal, jumlah_lembar, keterangan) values('$nomor','$uraian','$tanggal', '$jumlah', '$keterangan')");
+        $query = query("INSERT INTO klip_arsip(nomor_surat, uraian, tanggal, jumlah_lembar, keterangan) values('$nomor','$uraian', '$tanggal, '$jumlah', '$keterangan')");
         if($query){
             echo '<script>alert("Tambah Data Berhasil")</script>';
             header('location: ../index.php');
@@ -45,17 +45,27 @@ function insert_data($nomor, $uraian, $tanggal, $jumlah, $keterangan){
         }
 }
 
-function edit_data($nomor_surat, $uraian, $tanggal, $jumlah, $keterangan){
-
+function edit_data($data_id, $nomor, $uraian, $tanggal, $jumlah, $keterangan){
+    // pastikan datanya ada
+    $check = query("SELECT * FROM klip_arsip WHERE id_klip = '$data_id'");
+    if(mysqli_num_rows($check) == 0){
+        echo '<script>alert("Data tidak ditemukan!");</script>';
+        return false;
+    }
+    $updated_query = query("UPDATE klip_arsip SET nomor_surat = '$nomor', 
+                                                uraian = '$uraian',
+                                                tanggal = '$tanggal',
+                                                jumlah_lembar = '$jumlah',
+                                                keterangan = '$keterangan'
+                                        WHERE id_klip = '$data_id'");
+    if($updated_query){
+        echo '<script>alert("Data berhasil diupdate!"); location.href="../index.php?page=arsip";</script>';
+    } else {
+        echo '<script>alert("Update gagal!");</script>';
+    }
 }
 
-function delete_single($id){
-    echo '<script>confirm("");</script>';
-}
 
-function delete_all($qry){
-
-}
 
 function search_item($keyword){
 
