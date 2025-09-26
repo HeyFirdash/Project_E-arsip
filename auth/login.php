@@ -31,11 +31,11 @@
                                     <div class="card-body">
                                         <form method="post">
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="username" type="text" name="username" placeholder="Masukkan Username" />
+                                                <input class="form-control" id="username" type="text" value="admin" name="username" placeholder="Masukkan Username"/>
                                                 <label for="username">Username</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputPassword" name="password" type="password" placeholder="Masukkan Password" />
+                                                <input class="form-control" id="inputPassword" name="password" type="password" value="123123" placeholder="Masukkan Password" />
                                                 <label for="inputPassword">Password</label>
                                             </div>
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
