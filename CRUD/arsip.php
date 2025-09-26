@@ -15,7 +15,7 @@
                 class="btn btn-danger">
                 <i class="fas fa-trash"></i> Hapus Semua
             </a>
-            <a href="?page=kredensial" class="btn btn-success">
+            <a href="?page=informasi" class="btn btn-success">
                 <i class="fas fa-archive"></i> Simpan
             </a>
         </div>

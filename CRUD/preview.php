@@ -1,6 +1,5 @@
 <?php 
-if(isset($_POST['nama_file'])) {
-    $nama_file = $_POST['nama_file'];
+if(isset($_POST['kategori'])) {
     $kategori = $_POST["kategori"];
     $bulan = $_POST['bulan'];
     $tahun = $_POST['tahun'];
@@ -19,7 +18,7 @@ if(isset($_POST['nama_file'])) {
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Preview Arsip</title>
+    <title>Preview File</title>
     <style>
         body {
             font-family: "Times New Roman", Times, serif;
@@ -43,7 +42,7 @@ if(isset($_POST['nama_file'])) {
             margin: 3px 0;
             font-weight: bold;
             text-align: left;
-            margin-left: 320px;    /* atur angka ini biar sejajar pas dengan huruf D */
+            margin-left: 320px;    
         }
 
         table {
@@ -104,47 +103,94 @@ if(isset($_POST['nama_file'])) {
             }
         }
 
+        thead { 
+            display: table-header-group; 
+        }
+
+        tfoot { 
+            display: table-row-group; 
+        }
+
+        tr { 
+            page-break-inside: avoid; 
+        }
+
+        @media print {
+            thead { 
+                display: table-header-group; 
+            }
+
+            tfoot { 
+                display: table-row-group; 
+            }
+
+            tr { 
+                page-break-inside: avoid; 
+            }
+
+            .action-buttons {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
-<div class="kop">
-    <h2 class="judul-utama">DAFTAR ARSIP AKTIF</h2>
-    <h2 class="judul-utama">DINAS KETENAGAKERJAAN PROVINSI SUMATERA UTARA</h2>
-    <h3 class="subjudul">DAFTAR ISI BERKAS : SURAT PERINTAH TUGAS <?= strtoupper($kategori) ?> <?= $bulan ?> <?= $tahun ?></h3>
-    <h3 class="subjudul">UNIT PENGOLAH : SEKRETARIAT</h3>
-</div>
-
-<table>
-    <thead>
-        <tr>
-        <th>NO. BERKAS</th>
-        <th>NO ITEM ARSIP</th>
-        <th>KODE KLASIFIKASI</th>
-        <th>URAIAN INFORMASI ARSIP</th>
-        <th>TANGGAL</th>
-        <th>JUMLAH</th>
-        </tr>
-    </thead>
-
-    <tbody>
-        <?php if (!empty($data_arsip)) : ?>
-            <?php $no = 1; foreach ($data_arsip as $arsip) : ?>
-                <tr>
-                    <td class="tengah"></td>
-                    <td class="tengah"><?= $no++ ?></td>
-                    <td class="tengah"><?= $arsip['nomor_surat'] ?></td>
-                    <td class="uraian"><?= $arsip['uraian'] ?></td>
-                    <td class="tengah"><?= $arsip['tanggal'] ?></td>
-                    <td class="tengah"><?= $arsip['jumlah_lembar'] ?> Lembar</td>
-                </tr>
-            <?php endforeach; ?>
-        <?php else : ?>
+    <table style="border:none; margin-bottom:15px;">
+        <thead>
+            <!-- Kop Surat -->
             <tr>
-                <td colspan="6" class="tengah">Data tidak tersedia</td>
+                <th colspan="6" style="border:none; padding:10px; text-align:center;">
+                    <div style="margin-bottom:5px; font-size:18px; font-weight:bold;">
+                        DAFTAR ARSIP AKTIF
+                    </div>
+                    <div style="margin-bottom:5px; font-size:18px;">
+                        DINAS KETENAGAKERJAAN PROVINSI SUMATERA UTARA
+                    </div>
+                    <!-- Subjudul: rata kiri tapi sejajar huruf "D" -->
+                    <div style="display:inline-block; text-align:left; font-size:16px; font-weight:bold; margin-top:5px;">
+                        DAFTAR ISI BERKAS : SURAT PERINTAH TUGAS <?= strtoupper($kategori) ?> <?= $bulan ?> <?= $tahun ?><br>
+                        UNIT PENGOLAH : SEKRETARIAT
+                    </div>
+                </th>
             </tr>
-        <?php endif; ?>
-        </tbody>
-</table>
+
+            <!-- Header Kolom -->
+            <tr>
+                <th>NO. BERKAS</th>
+                <th>NO ITEM ARSIP</th>
+                <th>KODE KLASIFIKASI</th>
+                <th>URAIAN INFORMASI ARSIP</th>
+                <th>TANGGAL</th>
+                <th>JUMLAH</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <?php if (!empty($data_arsip)) : ?>
+                <?php $no = 1; foreach ($data_arsip as $arsip) : ?>
+                    <tr>
+                        <td class="tengah"></td>
+                        <td class="tengah"><?= $no++ ?></td>
+                        <td class="tengah"><?= $arsip['nomor_surat'] ?></td>
+                        <td class="uraian"><?= $arsip['uraian'] ?></td>
+                        <td class="tengah"><?= $arsip['tanggal'] ?></td>
+                        <td class="tengah"><?= $arsip['jumlah_lembar'] ?> Lembar</td>
+                    </tr>
+                <?php endforeach; ?>
+            <?php else : ?>
+                <tr>
+                    <td colspan="6" class="tengah">Data tidak tersedia</td>
+                </tr>
+            <?php endif; ?>
+            </tbody>
+    </table>
+
+    <div class="action-buttons" style="margin-top:20px; text-align:center;">
+        <button onclick="window.print()" class="btn btn-success">
+            <i class="fa-solid fa-file-export"></i>
+            Export PDF
+        </button>
+    </div>
 </body>
 <script>
 </script>

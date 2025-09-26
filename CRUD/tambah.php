@@ -1,5 +1,5 @@
 <?php 
-    if(isset($_POST['nomor_surat'])) {
+    if (isset($_POST['nomor_surat'])) {
         $nomor = $_POST['nomor_surat'];
         $uraian = $_POST['uraian'];
         $tanggal = $_POST['tanggal'];
