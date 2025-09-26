@@ -60,7 +60,7 @@
                     <main>
                         <?php 
                             // daftar halaman yang diizinkan
-                            $allowed_pages = ['arsip', 'tambah', 'ubah', 'hapus', 'hapus_all','print', 'kredensial'];
+                            $allowed_pages = ['arsip', 'tambah', 'ubah', 'hapus', 'hapus_all','preview', 'kredensial'];
 
                             if (isset($_GET['page']) && in_array($_GET['page'], $allowed_pages)) {
                                 include "CRUD/" . $_GET['page'] . ".php";

@@ -6,7 +6,7 @@
                         <a href="?page=arsip" class="btn btn-danger">Kembali</a>
                         <hr>
     
-                    <form method="post">
+                    <form method="post" action="?page=preview">
                         <table class="table table--bordered">
                             <tr>
                                 <td width="200">Nama File</td>
