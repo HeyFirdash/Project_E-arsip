@@ -36,7 +36,7 @@ function log_out(){
 }
 
 function insert_data($nomor, $uraian, $tanggal, $jumlah, $keterangan){
-        $query = query("INSERT INTO klip_arsip(nomor_surat, uraian, tanggal, jumlah_lembar, keterangan) values('$nomor','$uraian', '$tanggal, '$jumlah', '$keterangan')");
+        $query = query("INSERT INTO klip_arsip(nomor_surat, uraian, tanggal, jumlah_lembar, keterangan) values('$nomor','$uraian', '$tanggal', '$jumlah', '$keterangan')");
         if($query){
             echo '<script>alert("Tambah Data Berhasil")</script>';
             header('location: ../index.php');
@@ -75,10 +75,6 @@ function search_item($keyword){
                         OR tanggal LIKE '%$keyword%' 
                         OR jumlah_lembar LIKE '%$keyword%' 
                         OR keterangan LIKE '%$keyword%'");
-
-}
-
-function print_data(){
 
 }
 ?>

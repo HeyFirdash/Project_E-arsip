@@ -55,12 +55,10 @@
                 </nav>
             </div>
             <div id="layoutSidenav_content">
-                <main>
-
                     <main>
                         <?php 
                             // daftar halaman yang diizinkan
-                            $allowed_pages = ['arsip', 'tambah', 'ubah', 'hapus', 'hapus_all','preview', 'kredensial'];
+                            $allowed_pages = ['arsip', 'tambah', 'ubah', 'hapus', 'hapus_all','preview', 'informasi'];
 
                             if (isset($_GET['page']) && in_array($_GET['page'], $allowed_pages)) {
                                 include "CRUD/" . $_GET['page'] . ".php";
@@ -68,17 +66,7 @@
                                 include "CRUD/arsip.php"; // default halaman
                             }
                         ?>
-                    </main>
-
-
                 </main>
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Aplikasi E-arsip 2025</div>
-                        </div>
-                    </div>
-                </footer>
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
