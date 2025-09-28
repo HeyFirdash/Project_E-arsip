@@ -116,16 +116,16 @@ if(isset($_POST['kategori'])) {
         }
 
         @media print {
+            tr, td, th {
+                page-break-inside: avoid !important;
+            }
+
             thead { 
                 display: table-header-group; 
             }
 
             tfoot { 
                 display: table-row-group; 
-            }
-
-            tr { 
-                page-break-inside: avoid; 
             }
 
             .action-buttons {
@@ -140,14 +140,14 @@ if(isset($_POST['kategori'])) {
             <!-- Kop Surat -->
             <tr>
                 <th colspan="6" style="border:none; padding:10px; text-align:center;">
-                    <div style="margin-bottom:5px; font-size:18px; font-weight:bold;">
+                    <div style="margin-bottom:px; font-size:18px; font-weight:bold;">
                         DAFTAR ARSIP AKTIF
                     </div>
-                    <div style="margin-bottom:5px; font-size:18px;">
+                    <div style="margin-bottom:1px; font-size:18px;">
                         DINAS KETENAGAKERJAAN PROVINSI SUMATERA UTARA
                     </div>
                     <!-- Subjudul: rata kiri tapi sejajar huruf "D" -->
-                    <div style="display:inline-block; text-align:left; font-size:16px; font-weight:bold; margin-top:5px;">
+                    <div style="display:inline-block; text-align:left; font-size:16px; font-weight:bold;">
                         DAFTAR ISI BERKAS : SURAT PERINTAH TUGAS <?= strtoupper($kategori) ?> <?= $bulan ?> <?= $tahun ?><br>
                         UNIT PENGOLAH : SEKRETARIAT
                     </div>
